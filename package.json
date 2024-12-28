@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "react-circular-progressbar": "^2.1.0"
+  }
+}
