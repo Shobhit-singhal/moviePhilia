@@ -15,7 +15,7 @@ const Specific = () => {
     const getMovie = async () => {
       try {
         const data = await getMovieById(params.id);
-        let val=Math.round((data.vote_average / 10) * 100);
+        let val = Math.round((data.vote_average / 10) * 100);
         console.log(val);
         setPer(val);
         console.log("movie:", data, "per:", per);
@@ -41,19 +41,19 @@ const Specific = () => {
 
   return (
     <>
-      <div className="w-5/6 h-[500px] m-auto flex">
-        <div className=" h-full w-1/3 flex justify-center items-center ">
+      <div className="m-3 flex items-center flex-col md:flex-row justify-center bg-slate-800 p-3 rounded-md">
+        <div className=" flex justify-center items-center md:w-1/5">
           <img
-            className="h-[90%] rounded-xl"
+            className="h-80 md:h-auto rounded-xl"
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt=""
           />
         </div>
-        <div className="h-full px-4 w-2/3 flex flex-col gap-5 justify-center items-start">
-          <h1>
+        <div className="h-full px-4 flex flex-col gap-5 justify-center items-start md:w-4/5">
+          <h1 className="text-3xl">
             {movie.title} ({movie.release_date.slice(0, 4)})
           </h1>
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center justify-between gap-3 flex-wrap ">
             <div className="border-2 p-1 px-2">{movie.adult ? "18" : "16"}</div>
             <p>
               {movie.release_date} ({movie.original_language.toUpperCase()})
@@ -68,24 +68,25 @@ const Specific = () => {
               {movie.runtime % 60 === 0 ? "" : Math.floor(movie.runtime % 60)}m
             </div>
           </div>
-          <div className="flex gap-5 items-center">
-            <div className="text-lg font-bold h-16 w-16 rounded-full bg-gray-900 flex justify-center items-center">
-              <CircularProgressbarWithChildren value={per} maxValue={100}>
-                <p>{per}%</p>
-              </CircularProgressbarWithChildren>
+          <div className="flex gap-7 items-center ">
+            <div className="flex gap-2">
+              <div className="text-md font-bold h-12 w-12 rounded-full bg-gray-900 flex justify-center items-center">
+                <CircularProgressbarWithChildren value={per} maxValue={100}>
+                  <p>{per}%</p>
+                </CircularProgressbarWithChildren>
+              </div>
+              <div><p>User</p> <p>Score</p></div>
             </div>
-            <div>User Score</div>
-            <div className="p-2 rounded-full bg-blue-600">
+            <div className="p-2 rounded-full text-base bg-blue-600">
               What's your vibe?
             </div>
           </div>
           <div className="text-gray-500 italic font-semibold">
             {movie.tagline}
           </div>
-          <div className="flex flex-col justify-start items-start text-left">
+          <div className="flex flex-col justify-start items-start text-left gap-2">
             <p>Overview</p>
-            <br />
-            <p>{movie.overview}</p>
+            <p className="bg-slate-300 text-black p-3 rounded-md text-md">{movie.overview}</p>
           </div>
         </div>
       </div>

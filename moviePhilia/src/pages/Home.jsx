@@ -23,7 +23,7 @@ const Home = () => {
             </div>
         
         
-        <div className='flex flex-col center gap-3 p-4'>
+        <div className='flex flex-col center gap-3 p-4 text-sm md:text-md'>
             <p>MoviePhilia is the best site to watch movies and TV series online for free. These are the things that make HDToday the best site so far:</p>
             <p>- No Ads</p>
             <p>- Free and Fast streaming server</p>
